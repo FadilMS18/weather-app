@@ -1,0 +1,1 @@
+export default x = 'this is from first.js'
