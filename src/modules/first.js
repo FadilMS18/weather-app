@@ -1,1 +1,3 @@
-export default x = 'this is from first.js'
+let x = 'this is from first js'
+
+export { x }

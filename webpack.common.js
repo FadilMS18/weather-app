@@ -15,12 +15,12 @@ module.exports = {
     },
     plugins:[
         new HTMLWebpackPlugin({
-            title: 'Weather App',
             template: './src/index.html',
             meta:{
                 description: 'Weather app with responsive layout from the odin project made by FadilMs18',
                 author: 'FadilMs18'
             },
+            favicon:'./src/images/cloud_40534.ico',
             inject: 'body'
         }),
 
