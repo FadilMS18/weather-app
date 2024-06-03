@@ -1,0 +1,37 @@
+
+#loading-screen{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -70px;
+    right: -70px;
+    z-index: 999;
+    padding: 0 0 200px;
+    background-color: var(--accentMain);
+    background-image: url(./../images/gif/loading-gif.gif);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .95;
+    transition: .25s;
+}
+
+
+#loading-screen > span{
+    font-size: 1.7rem;
+    align-self: end;
+    padding: 20px;
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 10px;
+    box-shadow:inset 0px 0px 5px 1px rgba(255, 255, 255, .4), 0px 0px 5px 1px rgba(0, 0, 0, .4);
+    cursor: pointer;
+    user-select: none;
+}
+
+#loading-screen.finish{
+    opacity: 0;
+    pointer-events: none;
+}
