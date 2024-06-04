@@ -9,17 +9,6 @@
 
 :root{
     font-family: "Outfit", "arial", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* --main: #ffffff;
-    --mainText: #000000;
-    --secondary: #d1d1d1;
-    --accentMain: #95ff95;
-    #364156
-    #1e2a47
-    #4b5d72
-    #3b4263
-    #2b374f
-    #
-    */
     scroll-behavior: smooth;
 }
 :root.dark{
@@ -31,7 +20,7 @@
     --svgFill: #e6e6fa
 }
 
-*{
+*:not(dialog){
     box-sizing: content-box;
 }
 *:not(dialog){
@@ -42,9 +31,9 @@ input:focus{
     outline: none;
 }
 body{
-    height: 300vh;
+    /* height: 300vh; */
     color: var(--mainText);
-    background-image: linear-gradient(to left top, var(--main), var(--accentMain));
+    background-image: linear-gradient(to left top, var(--main), var(--accentMain), var(--secondary));
     
 }
 #main{
@@ -201,11 +190,18 @@ body{
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .2);
+    transition: .25s;
+    cursor: pointer;
 
 }
-.future-days-content > svg{
-    width: 50px;
-    width: 50px;
+.future-days-content:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 7px 1px rgba(255, 255, 255, .7)
+}
+
+.future-days-content > img{
+    width: 75px;
+    width: 100px;
 }
 .content{
     display: flex;
@@ -239,5 +235,40 @@ body{
     }
     100%{
         transform: translateX(0);
+    }
+}
+
+@keyframes dialogOpen {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+        display: none;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes dialogClose {
+    0%{
+        transform: scale(1);
+        opacity: 1;
+        display: block;
+    }
+    100%{
+        transform: scale(0);
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes backdropOpen{
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, .8);
     }
 }

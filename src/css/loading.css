@@ -35,3 +35,57 @@
     opacity: 0;
     pointer-events: none;
 }
+
+.dialog{
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    animation: dialogClose .35s ;
+}
+
+.dialog[open]{
+    animation: dialogOpen .35s ;
+}
+.dialog[open]::backdrop{
+    animation: backdropOpen .35s forwards;
+}
+
+#dialog-content{
+    display: flex;
+    flex-direction: column;
+    padding: 25px 40px ;
+
+    background-color: var(--secondary);
+    border:none;
+    border-radius: 10px;
+    color: var(--mainText);
+    border: solid 2px var(--mainText);
+}
+#dialog-content > p {
+    margin:10px 0 20px;
+}
+#content-detail{
+    font-size: 1.15rem;
+    line-height: 1.9rem;
+}
+#close-dialog{
+    background-color: var(--accentSecond);
+    margin-top:20px;
+    align-self: end;
+    padding:10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    color: var(--mainText);
+    box-shadow: 0 0 5px 1px rgba(255, 255, 255, .6);
+    cursor: pointer;
+    transition: .25s;
+}
+#close-dialog:focus{
+    outline: none;
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 1);
+}
+#close-dialog:hover{
+    transform: scale(1.1);
+}
