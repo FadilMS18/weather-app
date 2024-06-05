@@ -40,13 +40,15 @@ function dialogMaker(data, index) {
   button.setAttribute("id", "close-dialog");
   button.textContent = "Close";
   button.addEventListener("click", async () => {
-    setTimeout(() => {
-      document.body.removeChild(dialog);
-    }, 351);
+    setTimeout(()=>{
+        dialog.remove()
+    },351)
+    
     dialog.close();
+    
   });
   dialogContent.appendChild(button);
-  return dialog;
+  return dialog
 }
 
 export { dialogMaker };

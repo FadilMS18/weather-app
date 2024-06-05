@@ -7,7 +7,7 @@ import { WeatherHandler, desiredTempCelsius } from "./modules/weather";
 // TODO: Use figma to design phone and tablet layout
 
 window.addEventListener("scroll", navbarHandler);
-window.addEventListener("DOMContentLoaded", loadFirstPage);
+window.addEventListener("DOMContentLoaded", loadFirstPage, {once: true});
 
 // default city searcher that is Amsterdam
 function loadFirstPage() {

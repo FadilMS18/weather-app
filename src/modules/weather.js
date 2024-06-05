@@ -55,13 +55,10 @@ function hourlyWeather(data) {
 // Function for 3 days forecast with dialog for clicking it
 async function forecastHandler(data, desiredTempCelsius) {
   const forecastContent = [...document.querySelectorAll(".content")];
-  const futureDaysContent = [
-    ...document.querySelectorAll(".future-days-content"),
-  ];
   const forecastIMG = [
     ...document.querySelectorAll(".future-days-content > img"),
   ];
-  const { forecast } = data;
+  const { forecast } = await data;
   const forecastDay = forecast.forecastday;
   forecastContent.forEach((content, index) => {
     const title = content.querySelector("h4");
@@ -79,11 +76,21 @@ async function forecastHandler(data, desiredTempCelsius) {
   });
 
   hourlyWeather(forecastDay[0]);
+}
+
+async function contentDetail(forecastDay) {
+  const futureDaysContent = [
+    ...document.querySelectorAll(".future-days-content"),
+  ];
 
   futureDaysContent.forEach((content, index) => {
     content.addEventListener("click", () => {
       const dialog = dialogMaker(forecastDay, index);
       document.body.appendChild(dialog);
+      const dialoger = [...document.querySelectorAll(".dialog")];
+      for (let i = 0; i < dialoger.length - 1; i++) {
+        dialoger[i].remove();
+      }
       dialog.showModal();
     });
   });
@@ -141,6 +148,7 @@ async function WeatherHandler(searchBar, desiredTempCelsius) {
     cityNameHandler(data);
     conditionHandler(data, desiredTempCelsius);
     forecastHandler(data, desiredTempCelsius);
+    contentDetail(data.forecast.forecastday);
     tempSwitcher(data);
 
     loadingScreen.classList.add("finish");
@@ -154,14 +162,14 @@ async function WeatherHandler(searchBar, desiredTempCelsius) {
 
 // function to trigger the search box with enter key or button click
 function searchButtonEvent(button) {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", async () => {
     const searchBar = button.parentElement.firstElementChild;
     WeatherHandler(searchBar, desiredTempCelsius);
   });
 }
 
-function searchEnter(bar) {
-  bar.addEventListener("keyup", (e) => {
+async function searchEnter(bar) {
+  bar.addEventListener("keyup", async (e) => {
     if (e.key !== "Enter") {
       return;
     }
