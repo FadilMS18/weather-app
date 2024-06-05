@@ -10,8 +10,6 @@
 :root{
     font-family: "Outfit", "arial", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     scroll-behavior: smooth;
-}
-:root.dark{
     --main: #070f2b;
     --mainText: #ffffff;
     --secondary: #333c65;
@@ -19,6 +17,7 @@
     --accentSecond: #9290c3;
     --svgFill: #e6e6fa
 }
+
 
 *:not(dialog){
     box-sizing: content-box;
@@ -164,6 +163,12 @@ body{
     border-radius: 50%;
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .4);
 }
+
+#celsius-icon.active, #fahrenheit-icon.active{
+    transform: scale(1.3);
+    box-shadow: 0 0 5px 1px rgba(255, 255, 255, 1);
+}
+
 #temp-convert > :hover{
     transform: scale(1.15);
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .7);

@@ -20,8 +20,8 @@ function dialogMaker(data, index){
     }
     liArray[0].textContent = `Max Temperature in celsius: ${data[index].day.maxtemp_c} °C`
     liArray[1].textContent = `Max Temperature in fahrenheit: ${data[index].day.maxtemp_f} °F`
-    liArray[2].textContent = `Avg Temperature in celsius: ${data[index].day.avgtemp_c}`
-    liArray[3].textContent = `Avg Temperature in fahrenheit: ${data[index].day.avgtemp_f}`
+    liArray[2].textContent = `Avg Temperature in celsius: ${data[index].day.avgtemp_c} °C`
+    liArray[3].textContent = `Avg Temperature in fahrenheit: ${data[index].day.avgtemp_f} °F`
     liArray[4].textContent = `Chance of rain: ${data[index].day.daily_chance_of_rain} %`
     liArray[5].textContent = `Max wind speed: ${data[index].day.maxwind_mph} mph / ${data[index].day.maxwind_kph} kph`
     liArray[6].textContent = `Sunrise at: ${data[index].astro.sunrise}`

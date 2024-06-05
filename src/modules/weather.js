@@ -5,7 +5,7 @@ let x = 'this is from first js'
 
 const searchBar = [...document.querySelectorAll('.searcher')]
 const searchButton = [...document.querySelectorAll('.searcher-button')]
-let desiredTempCelcius = true
+let desiredTempCelsius = true
 
 
 async function getWeatherData(searchBar){
@@ -22,22 +22,24 @@ function cityNameHandler(data){
     cityInfo.innerText = `${location.name}, ${location.region} ${location.country} \n ${localTime}`
 }
 
-function conditionHandler(data){
+function conditionHandler(data, desiredTempCelsius){
     const {current} = data
     const condition = document.querySelector('#condition')
     condition.textContent = current.condition.text
     const temp = document.querySelector('#temp-info > h2')
-    temp.textContent = `${current.temp_c} °C`
+    if(desiredTempCelsius){
+        temp.textContent = `${current.temp_c} °C`
+    }else{
+        temp.textContent = `${current.temp_f} °F`
+    }
+    
 }
 
 
 function hourlyWeather(data){    
     const thead = [...document.querySelectorAll('#table-heading > div > p')]
     const tableContent = [...document.querySelectorAll('.table-content')]
-    console.log(thead)
-    console.log(tableContent)
-
-
+    
     thead[0].textContent = `Sunrise: ${data.astro.sunrise}`
     thead[1].textContent = `Sunset: ${data.astro.sunset}`
     tableContent.forEach((content, index)=>{
@@ -48,7 +50,7 @@ function hourlyWeather(data){
     })
 }
 
-async function forecastHandler(data){
+async function forecastHandler(data, desiredTempCelsius){
     const forecastContent = [...document.querySelectorAll('.content')]
     const futureDaysContent = [...document.querySelectorAll('.future-days-content')]
     const forecastIMG = [...document.querySelectorAll('.future-days-content > img')]
@@ -62,7 +64,12 @@ async function forecastHandler(data){
         forecastIMG[index].src = forecastDay[index].day.condition.icon
         title.textContent = forecastDay[index].day.condition.text
         date.textContent = format(forecastDay[index].date, 'EEE, dd MMM y')
-        temp.textContent = `${forecastDay[index].day.maxtemp_c} °C`
+        if(desiredTempCelsius){
+            temp.textContent = `${forecastDay[index].day.maxtemp_c} °C`
+        }else{
+            temp.textContent = `${forecastDay[index].day.maxtemp_f} °F`
+        }
+        
     })
 
     await hourlyWeather(forecastDay[0])
@@ -79,13 +86,38 @@ async function forecastHandler(data){
 
 function checkInputValue(input){
     if(input.value === ''){
-        console.log('Please insert a city name')
+        alert('Search box cannot be empty')
         return true
     }
     return false
 }
 
-async function leftContainerHandler(searchBar){
+function tempSwitcher(data){
+    const celsius = document.querySelector('#celsius-icon')
+    const fahrenheit = document.querySelector('#fahrenheit-icon')
+
+    celsius.addEventListener('click', ()=>{
+        desiredTempCelsius = true
+        if(!celsius.classList.contains('active')){
+            celsius.classList.add('active')
+            fahrenheit.classList.remove('active')
+        }
+        conditionHandler(data, desiredTempCelsius)
+        forecastHandler(data, desiredTempCelsius)
+    })
+
+    fahrenheit.addEventListener('click', async ()=>{
+        desiredTempCelsius = false
+        if(!fahrenheit.classList.contains('active')){
+            fahrenheit.classList.add('active')
+            celsius.classList.remove('active')
+        }
+        conditionHandler(data, desiredTempCelsius)
+        forecastHandler(data, desiredTempCelsius)
+    })
+}
+
+async function WeatherHandler(searchBar, desiredTempCelsius){
     const loadingScreen = document.querySelector('#loading-screen')
     if(checkInputValue(searchBar)){ return }
     loadingScreen.classList.remove('finish')
@@ -97,39 +129,40 @@ async function leftContainerHandler(searchBar){
         searchBar.value = ''
 
         cityNameHandler(data)
-        conditionHandler(data)
-        forecastHandler(data)
+        conditionHandler(data, desiredTempCelsius)
+        forecastHandler(data, desiredTempCelsius)
+        tempSwitcher(data)
 
         loadingScreen.classList.add('finish')
     } catch (error) {
         loadingScreen.classList.add('finish')
         searchBar.value = ''
+        alert('Please search for a valid city')
         return;
     }
 
     
 }
 
-
-
-
-
-
-searchButton.forEach((button)=>{
+function searchButtonEvent(button){
     button.addEventListener('click', ()=>{
         const searchBar = button.parentElement.firstElementChild
-        leftContainerHandler(searchBar)
+        WeatherHandler(searchBar, desiredTempCelsius)
     })
-})
+}
 
-searchBar.forEach((bar)=>{
+function searchEnter(bar){
     bar.addEventListener('keyup',  (e)=>{
         if(e.key !== 'Enter'){
             return
         }
-        leftContainerHandler(bar)
+        WeatherHandler(bar, desiredTempCelsius)
     })
-})  
+}
+
+searchButton.forEach(searchButtonEvent)
+searchBar.forEach(searchEnter)  
+
 
 
 // TODO: Make one async function for content container and make mega function that will pop up the loading and await all async function
@@ -138,4 +171,4 @@ searchBar.forEach((bar)=>{
 
 
 
-export { x }
+export { WeatherHandler, desiredTempCelsius }
