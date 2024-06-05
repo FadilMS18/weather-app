@@ -1,5 +1,6 @@
 import { format } from "date-fns"
 
+// Function to make a dialog when user click the 3 days forecast
 function dialogMaker(data, index){
     const dialog = document.createElement('dialog')
     dialog.classList.add('dialog')

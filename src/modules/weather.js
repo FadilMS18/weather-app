@@ -1,13 +1,11 @@
 import { format } from "date-fns"
 import { dialogMaker } from "./dialog"
 
-let x = 'this is from first js'
-
 const searchBar = [...document.querySelectorAll('.searcher')]
 const searchButton = [...document.querySelectorAll('.searcher-button')]
 let desiredTempCelsius = true
 
-
+// fetch function to get json data from weatherAPI
 async function getWeatherData(searchBar){
     const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=4c9280a21b7640efb4e51904242205&q=${searchBar.value}&days=3&aqi=no&alerts=no`, {mode:'cors'})
     const data = await response.json()
@@ -15,6 +13,7 @@ async function getWeatherData(searchBar){
     return data    
 }
 
+// Location function that will change city information
 function cityNameHandler(data){
     const {location} = data
     const cityInfo = document.querySelector('#city')
@@ -22,6 +21,7 @@ function cityNameHandler(data){
     cityInfo.innerText = `${location.name}, ${location.region} ${location.country} \n ${localTime}`
 }
 
+// Condition function for change the condition in that day based on weatherAPI source
 function conditionHandler(data, desiredTempCelsius){
     const {current} = data
     const condition = document.querySelector('#condition')
@@ -35,7 +35,7 @@ function conditionHandler(data, desiredTempCelsius){
     
 }
 
-
+// Table content Maker
 function hourlyWeather(data){    
     const thead = [...document.querySelectorAll('#table-heading > div > p')]
     const tableContent = [...document.querySelectorAll('.table-content')]
@@ -50,6 +50,7 @@ function hourlyWeather(data){
     })
 }
 
+// Function for 3 days forecast with dialog for clicking it
 async function forecastHandler(data, desiredTempCelsius){
     const forecastContent = [...document.querySelectorAll('.content')]
     const futureDaysContent = [...document.querySelectorAll('.future-days-content')]
@@ -72,7 +73,7 @@ async function forecastHandler(data, desiredTempCelsius){
         
     })
 
-    await hourlyWeather(forecastDay[0])
+    hourlyWeather(forecastDay[0])
 
     futureDaysContent.forEach((content, index)=>{
         content.addEventListener('click', ()=>{
@@ -84,6 +85,7 @@ async function forecastHandler(data, desiredTempCelsius){
     
 }
 
+// function to check the search box, is it empty or not 
 function checkInputValue(input){
     if(input.value === ''){
         alert('Search box cannot be empty')
@@ -92,6 +94,7 @@ function checkInputValue(input){
     return false
 }
 
+// Temp Converter function, switch between celsius & fahrenheit
 function tempSwitcher(data){
     const celsius = document.querySelector('#celsius-icon')
     const fahrenheit = document.querySelector('#fahrenheit-icon')
@@ -117,6 +120,7 @@ function tempSwitcher(data){
     })
 }
 
+// Function to run all the other functions 
 async function WeatherHandler(searchBar, desiredTempCelsius){
     const loadingScreen = document.querySelector('#loading-screen')
     if(checkInputValue(searchBar)){ return }
@@ -144,6 +148,7 @@ async function WeatherHandler(searchBar, desiredTempCelsius){
     
 }
 
+// function to trigger the search box with enter key or button click 
 function searchButtonEvent(button){
     button.addEventListener('click', ()=>{
         const searchBar = button.parentElement.firstElementChild
@@ -162,13 +167,6 @@ function searchEnter(bar){
 
 searchButton.forEach(searchButtonEvent)
 searchBar.forEach(searchEnter)  
-
-
-
-// TODO: Make one async function for content container and make mega function that will pop up the loading and await all async function
-
-
-
 
 
 export { WeatherHandler, desiredTempCelsius }

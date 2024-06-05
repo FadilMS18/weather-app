@@ -3,27 +3,19 @@ import './css/loading.css'
 import './css/nav.css'
 import './css/hourly.css'
 import { WeatherHandler, desiredTempCelsius} from './modules/weather'
-console.log('Hello, world!')
-
-
-// Remember: Weather API only allow us to get 3 days ahead forecast
-
-
-// °C °F
 
 // TODO: Use figma to design phone and tablet layout
-
-const root = document.querySelector(":root")
-
 
 window.addEventListener('scroll', navbarHandler)
 window.addEventListener('DOMContentLoaded', loadFirstPage)
 
+// default city searcher that is Amsterdam
 function loadFirstPage(){
     const searchBar = document.querySelector('#search')
     WeatherHandler(searchBar, desiredTempCelsius)
 }
 
+// Scroll down function, pop the navbar when ever the user past the first search box
 function navbarHandler(){
     const navbar = document.querySelector('#nav')
     if(window.scrollY > 400){
@@ -33,5 +25,3 @@ function navbarHandler(){
         navbar.classList.add('popNavbar')
     }  
 }
-
-// TODO: Make a function that will convert all celsius temp to fahrenheit or celsius

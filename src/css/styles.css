@@ -30,7 +30,6 @@ input:focus{
     outline: none;
 }
 body{
-    /* height: 300vh; */
     color: var(--mainText);
     background-image: linear-gradient(to left top, var(--main), var(--accentMain), var(--secondary));
     
@@ -42,7 +41,6 @@ body{
 }
 
 #left-container{
-    /* width: 1800px; */
     display: flex;
     flex-direction: column;
     padding: 20px 300px 20px 20px;
@@ -78,7 +76,6 @@ body{
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .4);
     min-width: 450px;
-    /* max-height: 400px; */
     max-width: fit-content;
     background-color: var(--secondary);
 }
@@ -103,12 +100,10 @@ body{
     display: flex;
     flex-direction: row;
     place-self: center;
-    /* justify-content: center; */
     align-items: center;
     width: 90%;
     margin: 35px 0 45px;
     position: relative;
-    /* overflow: hidden; */
 }
 #search{
     height: 0px;
@@ -148,7 +143,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* justify-content: space-between; */
     padding:0 100px;
     gap:50px;
 }
@@ -180,11 +174,9 @@ body{
 #future-days-container{
     margin-top:100px;
     padding:20px 100px;
-    /* background-color: salmon; */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* gap:10px; */
 }
 
 .future-days-content{
