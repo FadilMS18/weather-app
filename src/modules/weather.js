@@ -8,7 +8,7 @@ let desiredTempCelsius = true;
 // fetch function to get json data from weatherAPI
 async function getWeatherData(searchBar) {
   const response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=4c9280a21b7640efb4e51904242205&q=${searchBar.value}&days=3&aqi=no&alerts=no`,
+    `https://api.weatherapi.com/v1/forecast.json?key=4c9280a21b7640efb4e51904242205&q=${searchBar.value}&days=3&aqi=no&alerts=no`,
     { mode: "cors" }
   );
   const data = await response.json();
