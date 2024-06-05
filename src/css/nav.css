@@ -1,58 +1,58 @@
-#nav{
+#nav {
     position: fixed;
     z-index: 999;
     width: 100vw;
-    top:0;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:10px 0;
+    padding: 10px 0;
     background-color: var(--accentSecond);
     color: var(--mainText);
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .4);
     transition: .25s;
 }
 
-.popNavbar{
+.popNavbar {
     transform: translateY(-110%);
 
 }
 
 
-#nav > h1{
+#nav>h1 {
     margin-left: 100px;
     font-size: 2rem
 }
-#navbar-search{
+
+#navbar-search {
     margin-right: 100px;
     display: flex;
     position: relative;
 }
-#search-onNavbar{
+
+#search-onNavbar {
     font-family: "Outfit";
     padding: 10px 65px 10px 20px;
     border: none;
-    border-radius:10px;
+    border-radius: 10px;
     box-shadow: 0 0 5px 1px rgba(255, 255, 255, .3);
 }
 
-#search-button-onNavbar{
+#search-button-onNavbar {
     position: absolute;
     height: 100%;
-    padding:0 20px;
+    padding: 0 20px;
     width: 20px;
     right: 0;
     background-color: white;
-    border-top-right-radius: 5px ;
-    border-bottom-right-radius: 5px ;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     cursor: pointer;
     transition: .25s;
     stroke: black;
 }
 
-#search-button-onNavbar:hover{
+#search-button-onNavbar:hover {
     background-color: black;
     stroke: aqua;
 }
-
-

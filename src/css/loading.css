@@ -1,5 +1,4 @@
-
-#loading-screen{
+#loading-screen {
     display: flex;
     justify-content: center;
     position: fixed;
@@ -19,60 +18,64 @@
 }
 
 
-#loading-screen > span{
+#loading-screen>span {
     font-size: 1.7rem;
     align-self: end;
     padding: 20px;
     background-color: var(--secondary);
     border: none;
     border-radius: 10px;
-    box-shadow:inset 0px 0px 5px 1px rgba(255, 255, 255, .4), 0px 0px 5px 1px rgba(0, 0, 0, .4);
+    box-shadow: inset 0px 0px 5px 1px rgba(255, 255, 255, .4), 0px 0px 5px 1px rgba(0, 0, 0, .4);
     cursor: pointer;
     user-select: none;
 }
 
-#loading-screen.finish{
+#loading-screen.finish {
     opacity: 0;
     pointer-events: none;
 }
 
-.dialog{
+.dialog {
     padding: 0;
     background-color: transparent;
     outline: none;
-    animation: dialogClose .35s ;
+    animation: dialogClose .35s;
 }
 
-.dialog[open]{
-    animation: dialogOpen .35s ;
+.dialog[open] {
+    animation: dialogOpen .35s;
 }
-.dialog[open]::backdrop{
+
+.dialog[open]::backdrop {
     animation: backdropOpen .35s forwards;
 }
 
-#dialog-content{
+#dialog-content {
     display: flex;
     flex-direction: column;
-    padding: 25px 40px ;
+    padding: 25px 40px;
 
     background-color: var(--secondary);
-    border:none;
+    border: none;
     border-radius: 10px;
     color: var(--mainText);
     border: solid 2px var(--mainText);
 }
-#dialog-content > p {
-    margin:10px 0 20px;
+
+#dialog-content>p {
+    margin: 10px 0 20px;
 }
-#content-detail{
+
+#content-detail {
     font-size: 1.15rem;
     line-height: 1.9rem;
 }
-#close-dialog{
+
+#close-dialog {
     background-color: var(--accentSecond);
-    margin-top:20px;
+    margin-top: 20px;
     align-self: end;
-    padding:10px 20px;
+    padding: 10px 20px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
@@ -81,11 +84,13 @@
     cursor: pointer;
     transition: .25s;
 }
-#close-dialog:focus{
+
+#close-dialog:focus {
     outline: none;
     transform: scale(1.1);
     box-shadow: 0 0 5px 1px rgba(255, 255, 255, 1);
 }
-#close-dialog:hover{
+
+#close-dialog:hover {
     transform: scale(1.1);
 }

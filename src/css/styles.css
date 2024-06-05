@@ -7,7 +7,7 @@
 
 */
 
-:root{
+:root {
     font-family: "Outfit", "arial", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     scroll-behavior: smooth;
     --main: #070f2b;
@@ -19,84 +19,92 @@
 }
 
 
-*:not(dialog){
+*:not(dialog) {
     box-sizing: content-box;
 }
-*:not(dialog){
-    padding:0;
-    margin:0;
-}
-input:focus{
-    outline: none;
-}
-body{
-    color: var(--mainText);
-    background-image: linear-gradient(to left top, var(--main), var(--accentMain), var(--secondary));
-    
-}
-#main{
-    display: flex;
-    padding:70px 100px;
-    justify-content:space-between
+
+*:not(dialog) {
+    padding: 0;
+    margin: 0;
 }
 
-#left-container{
+input:focus {
+    outline: none;
+}
+
+body {
+    color: var(--mainText);
+    background-image: linear-gradient(to left top, var(--main), var(--accentMain), var(--secondary));
+
+}
+
+#main {
+    display: flex;
+    padding: 70px 100px;
+    justify-content: space-between
+}
+
+#left-container {
     display: flex;
     flex-direction: column;
     padding: 20px 300px 20px 20px;
     gap: 10px;
 }
-#left-container > h1{
+
+#left-container>h1 {
     font-size: 4rem;
 }
-#left-container > p{
+
+#left-container>p {
     font-size: 1.3rem;
 }
-#left-container a{
+
+#left-container a {
     color: var(--accentSecond);
 
 }
 
-#scroll-down{
+#scroll-down {
     margin-top: 50px;
     border-left: 55px solid transparent;
     border-right: 55px solid transparent;
     border-top: 50px solid var(--accentSecond);
-    animation: scrollDownAnimation 1.25s alternate infinite;  
+    animation: scrollDownAnimation 1.25s alternate infinite;
     align-self: center;
     cursor: pointer;
-    
+
 }
 
 
-#right-container{
+#right-container {
     display: flex;
     flex-direction: column;
-    padding:20px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .4);
     min-width: 450px;
     max-width: fit-content;
     background-color: var(--secondary);
 }
-#condition{
+
+#condition {
     margin-bottom: 5px;
 }
 
-#city-info{
+#city-info {
     font-size: 1.2rem;
     line-height: 1.6rem;
 }
 
-#temp-info{
-    margin-top:10px;
+#temp-info {
+    margin-top: 10px;
 }
 
-#temp-info > h2 {
+#temp-info>h2 {
     font-size: 3rem;
 }
 
-#search-container{
+#search-container {
     display: flex;
     flex-direction: row;
     place-self: center;
@@ -105,49 +113,51 @@ body{
     margin: 35px 0 45px;
     position: relative;
 }
-#search{
+
+#search {
     height: 0px;
     padding: 20px 75px 20px 20px;
     width: 100%;
     border: none;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .4) ;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .4);
     transition: .25s;
     font-family: "Roboto";
 }
-#search:focus{
+
+#search:focus {
     outline: none;
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, 1), 0 25px 35px -10px rgba(0, 0, 0, 1);
 }
 
-#search-button{
+#search-button {
     position: absolute;
     height: 100%;
-    padding:0 20px;
+    padding: 0 20px;
     width: 20px;
     right: 0;
     background-color: white;
-    border-top-right-radius: 5px ;
-    border-bottom-right-radius: 5px ;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     cursor: pointer;
     transition: .25s;
     stroke: black;
 }
 
-#search-button:hover{
+#search-button:hover {
     background-color: black;
     stroke: aqua;
 }
 
-#temp-convert{
+#temp-convert {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:0 100px;
-    gap:50px;
+    padding: 0 100px;
+    gap: 50px;
 }
 
-#celsius-icon, #fahrenheit-icon{
+#celsius-icon, #fahrenheit-icon {
     fill: var(--accentSecond);
     height: 55px;
     width: 55px;
@@ -158,31 +168,32 @@ body{
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .4);
 }
 
-#celsius-icon.active, #fahrenheit-icon.active{
+#celsius-icon.active, #fahrenheit-icon.active {
     transform: scale(1.3);
     box-shadow: 0 0 5px 1px rgba(255, 255, 255, 1);
 }
 
-#temp-convert > :hover{
+#temp-convert> :hover {
     transform: scale(1.15);
     box-shadow: 0px 0px 5px 1px rgba(255, 255, 255, .7);
 }
-#temp-convert > :active{
+
+#temp-convert> :active {
     transform: scale(1);
 }
 
-#future-days-container{
-    margin-top:100px;
-    padding:20px 100px;
+#future-days-container {
+    margin-top: 100px;
+    padding: 20px 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.future-days-content{
+.future-days-content {
     display: flex;
-    gap:35px;
-    padding:25px 35px;
+    gap: 35px;
+    padding: 25px 35px;
     background-color: var(--secondary);
     border: none;
     border-radius: 10px;
@@ -191,57 +202,65 @@ body{
     cursor: pointer;
 
 }
-.future-days-content:hover{
+
+.future-days-content:hover {
     transform: scale(1.05);
     box-shadow: 0 0 7px 1px rgba(255, 255, 255, .7)
 }
 
-.future-days-content > img{
+.future-days-content>img {
     width: 75px;
     width: 100px;
 }
-.content{
+
+.content {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
 }
-.content > h4{
+
+.content>h4 {
     font-size: 1.1rem;
 }
-.content > p{
+
+.content>p {
     font-size: .9rem;
 }
-.content > h5{
-    font-size: 2rem ;
+
+.content>h5 {
+    font-size: 2rem;
 }
 
 
 /* Animation */
 @keyframes scrollDownAnimation {
-    0%{
+    0% {
         transform: translateY(0px);
     }
-    100%{
+
+    100% {
         transform: translateY(50px);
     }
 }
 
 @keyframes navbarSlide {
-    0%{
+    0% {
         transform: translateX(100%);
     }
-    100%{
+
+    100% {
         transform: translateX(0);
     }
 }
 
 @keyframes dialogOpen {
-    0%{
+    0% {
         transform: scale(0);
         opacity: 0;
         display: none;
     }
-    100%{
+
+    100% {
         transform: scale(1);
         opacity: 1;
         display: block;
@@ -249,23 +268,25 @@ body{
 }
 
 @keyframes dialogClose {
-    0%{
+    0% {
         transform: scale(1);
         opacity: 1;
         display: block;
     }
-    100%{
+
+    100% {
         transform: scale(0);
         opacity: 0;
         display: none;
     }
 }
 
-@keyframes backdropOpen{
-    0%{
+@keyframes backdropOpen {
+    0% {
         background-color: rgba(0, 0, 0, 0);
     }
-    100%{
+
+    100% {
         background-color: rgba(0, 0, 0, .8);
     }
 }
