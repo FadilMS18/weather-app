@@ -40,6 +40,8 @@
     background-color: transparent;
     outline: none;
     animation: dialogClose .35s;
+    border:none;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, .4);
 }
 
 .dialog[open] {
@@ -72,7 +74,7 @@
 }
 
 #close-dialog {
-    background-color: var(--accentSecond);
+    background-color: var(--main);
     margin-top: 20px;
     align-self: end;
     padding: 10px 20px;
@@ -80,7 +82,7 @@
     border: none;
     border-radius: 5px;
     color: var(--mainText);
-    box-shadow: 0 0 5px 1px rgba(255, 255, 255, .6);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, .1);
     cursor: pointer;
     transition: .25s;
 }
